@@ -4,10 +4,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from forms import SignUpForm, LoginForm, Input
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.contrib.auth.models import User
 from .forms import SignUpForm
 from utlis.utlis import check
+from django.views.decorators.csrf import csrf_exempt
+
 
 
 # Create your views here.
@@ -67,13 +69,15 @@ def log_out(request):
     logout(request)
     return HttpResponseRedirect("login")
 
+@csrf_exempt
 def home(request):
     if request.method == "POST":
         form = Input(request.POST)
         if form.is_valid():
             string = form.cleaned_data.get('secret_key')
             x = check(string)
-            return render(request, 'output.html', {'key' : x})
+            d = {'key' : x}
+            return JsonResponse({'x':x})
     else:
         form = Input()
     return render(request, 'home.html', {'form' : form})
