@@ -4,9 +4,5 @@
 <link rel="stylesheet" href="{% static 'css/sign_up.css' %}">
 <link rel="script" href="{% static 'js/sign_up.js' %}">
 <div class="wrapper">
-    <form action="/home" method="POST">
-        {% csrf_token %}
-        {{form.as_table}}
-        <input type="submit" class="submit" value="Submit">
-    </form>
+    <p>{{ x }}</p>
 </div>

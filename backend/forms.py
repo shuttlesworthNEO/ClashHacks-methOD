@@ -17,7 +17,5 @@ class LoginForm(UserCreationForm):
         model = User
         fields = ('username', 'password1',)
 
-class IOForm(forms.Form):
+class Input(forms.Form):
     secret_key = forms.CharField(max_length=100)
-    cipher_name = forms.CharField(max_length=100)
-    public_key = forms.CharField(max_length=200)

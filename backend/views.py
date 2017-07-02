@@ -3,11 +3,11 @@ from __future__ import unicode_literals
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
-from forms import SignUpForm, LoginForm, IOForm
+from forms import SignUpForm, LoginForm, Input
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from .forms import SignUpForm
-# from utlis.utlis import check
+from utlis.utlis import check
 
 
 # Create your views here.
@@ -24,9 +24,11 @@ def index(request):
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             print(username, raw_password)
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect('home')
+            return HttpResponseRedirect("login")
+
+            #user = authenticate(username=username, password=raw_password)
+            #login(request, user)
+            #return redirect()
     else:
         form = SignUpForm()
     return render(request, 'index.html', {'form': form})
@@ -46,7 +48,7 @@ def log_in(request):
         if username and password:
             user = authenticate(username = username, password = password)
             login(request, user)
-            return render(request, 'home.html')
+            return HttpResponseRedirect(home(request))
         else:
             return render(request, 'registration/login.html')
         # if form.is_valid():
@@ -66,9 +68,17 @@ def log_out(request):
     return HttpResponseRedirect("login")
 
 def home(request):
-    return render(request, 'home.html')
+    if request.method == "POST":
+        form = Input(request.POST)
+        if form.is_valid():
+            string = form.cleaned_data.get('secret_key')
+            x = check(string)
+            return render(request, 'output.html', {'key' : x})
+    else:
+        form = Input()
+    return render(request, 'home.html', {'form' : form})
 
-def io(request):
-    if request.method == 'POST':
-        form = IOForm(request.POST)
+#def io(request):
+#    if request.method == 'POST':
+#        form = IOForm(request.POST)
         
