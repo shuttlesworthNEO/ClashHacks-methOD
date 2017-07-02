@@ -10,7 +10,7 @@ def check(x):
 
 	if len(x) == 16:
 		func_ = crypto(x)
-	else if len(x) == 32:
+	elif len(x) == 32:
 		func_ = decrypto(x)
 
 	return func_	

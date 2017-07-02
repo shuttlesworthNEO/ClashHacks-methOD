@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from backend.views import index, payment, log_in, home
+from backend.views import index, payment, log_in, home, log_out
 from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
     url(r'home', home),
-    url(r'login', auth_views.login),
+    url(r'login', log_in),
+    url(r'logout', log_out),
     url(r'payment', payment),
     url(r'',index),
 

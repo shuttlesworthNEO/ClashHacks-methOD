@@ -1,6 +1,10 @@
+<html>
+  <head>
+    <title>SignUp</title>
+  </head>
+
+<body>
 {% load staticfiles %}
-
-
 <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{% static 'css/sign_up.css' %}">
@@ -9,34 +13,39 @@
   <h1>Register For An Account</h1>
   <p>To sign-up for a account please provide us with some basic information using
   the contact form below. Please use valid credentials.</p>
-  <form class="form" method="POST" action="">
+  <form action="." method="POST">
+    {% csrf_token %}
+    {{form.as_table}}
+    <input type="submit" class="submit" value="Register">
+  </form>
+  <!--<form class="form" method="POST" action=".">
       {% csrf_token %}
-    <input type="text" class="name" placeholder="Name" value={{ name }}>
+    <input name="name" type="text" class="name" placeholder="Name">
     <div>
       <p class="name-help">Please enter your name.</p>
     </div>
-    <input type="email" class="email" placeholder="Email" value={{ email }}>
+    <input name="email" type="email" class="email" placeholder="Email">
      <div>
       <p class="email-help">Please enter your current email address.</p>
     </div>
-    <input type="text" class="name" placeholder="Username" value={{ username }}>
+    <input name="username" type="text" class="name" placeholder="Username">
      <div>
       <p class="name-help">Please enter your username.</p>
     </div>
-    <input type="text" class="company" placeholder="Company" value={{ company }}>
+    <input name="company" type="text" class="company" placeholder="Company">
      <div>
       <p class="company-help">Please enter your company's name.</p>
     </div>
-    <input type="password" class="password" placeholder="Password" value={{ password }}>
+    <input name="password" type="password" class="password" placeholder="Password">
      <div>
       <p class="password-help">Please enter your current email address.</p>
     </div>
-      <input type="password" class="password" placeholder="Password" value={{ password1 }}>
+      <input type="password" class="password" placeholder="Password">
      <div>
       <p class="password-help">Please confirm your password.</p>
     </div>
     <input type="submit" class="submit" value="Register">
-  </form>
+  </form>-->
 </div>
 
 <div style="color: white;font: Oswald;
@@ -46,3 +55,5 @@
 <p class="optimize">
   Optimized for Chrome & Firefox!
 </p>
+</body>
+</html>

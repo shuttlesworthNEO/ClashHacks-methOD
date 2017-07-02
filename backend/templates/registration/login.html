@@ -9,11 +9,11 @@
   <h1>Login</h1>
   <form method="POST">
       {% csrf_token %}
-    <input type="text" class="name" placeholder="Username">
+    <input name="username" type="text" class="name" placeholder="Username">
      <div>
       <p class="name-help">Please enter your username.</p>
     </div>
-    <input type="password" class="password" placeholder="Password">
+    <input name="password" type="password" class="password" placeholder="Password">
      <div>
       <p class="password-help">Please enter your current email address.</p>
     </div>
