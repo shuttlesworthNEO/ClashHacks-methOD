@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
-from forms import SignUpForm, LoginForm
+from forms import SignUpForm, LoginForm, IOForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 
@@ -49,3 +49,8 @@ def log_in(request):
 
 def home(request):
     return render(request, 'home.html')
+
+def io(request):
+    if request.method == 'POST':
+        form = IOForm(request.POST)
+        if 
