@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from forms import SignUpForm, LoginForm, IOForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-
+from utlis.utlis import check
 
 
 # Create your views here.
@@ -53,4 +53,4 @@ def home(request):
 def io(request):
     if request.method == 'POST':
         form = IOForm(request.POST)
-        if 
+        
