@@ -1,0 +1,26 @@
+{% load staticfiles %}
+
+
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{% static 'css/sign_up.css' %}">
+<link rel="script" href="{% static 'js/sign_up.js' %}">
+<div class="wrapper">
+  <h1>Login</h1>
+  <form method="POST">
+      {% csrf_token %}
+    <input type="text" class="name" placeholder="Username">
+     <div>
+      <p class="name-help">Please enter your username.</p>
+    </div>
+    <input type="password" class="password" placeholder="Password">
+     <div>
+      <p class="password-help">Please enter your current email address.</p>
+    </div>
+    <input type="submit" class="submit" value="Login">
+  </form>
+</div>
+
+<p class="optimize">
+  Optimized for Chrome & Firefox!
+</p>

@@ -1,0 +1,48 @@
+{% load staticfiles %}
+
+
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{% static 'css/sign_up.css' %}">
+<link rel="script" href="{% static 'js/sign_up.js' %}">
+<div class="wrapper">
+  <h1>Register For An Account</h1>
+  <p>To sign-up for a account please provide us with some basic information using
+  the contact form below. Please use valid credentials.</p>
+  <form class="form" method="POST" action="">
+      {% csrf_token %}
+    <input type="text" class="name" placeholder="Name" value={{ name }}>
+    <div>
+      <p class="name-help">Please enter your name.</p>
+    </div>
+    <input type="email" class="email" placeholder="Email" value={{ email }}>
+     <div>
+      <p class="email-help">Please enter your current email address.</p>
+    </div>
+    <input type="text" class="name" placeholder="Username" value={{ username }}>
+     <div>
+      <p class="name-help">Please enter your username.</p>
+    </div>
+    <input type="text" class="company" placeholder="Company" value={{ company }}>
+     <div>
+      <p class="company-help">Please enter your company's name.</p>
+    </div>
+    <input type="password" class="password" placeholder="Password" value={{ password }}>
+     <div>
+      <p class="password-help">Please enter your current email address.</p>
+    </div>
+      <input type="password" class="password" placeholder="Password" value={{ password1 }}>
+     <div>
+      <p class="password-help">Please confirm your password.</p>
+    </div>
+    <input type="submit" class="submit" value="Register">
+  </form>
+</div>
+
+<div style="color: white;font: Oswald;
+">
+    <center>Already a user?<a href="login/">   <button class="submit button">Login</button></a></center>
+</div>
+<p class="optimize">
+  Optimized for Chrome & Firefox!
+</p>
