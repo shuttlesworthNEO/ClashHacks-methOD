@@ -6,15 +6,15 @@ from keras.models import Model,load_model
 
 def decrypto(x):
 
-	decoder = load_model("encoder.h5")
+	decoder = load_model("/home/vasu/all_projects/Hackathons/ClashHacks-methOD/backend/utlis/encoder.h5")
 
 	x_ = list(x)
 	
 	inp = []
 	inpu=[]
 	for ix in range(len(x_)):
-    	if ix%2==0:
-        	inp.append(x_[ix])
+		if ix%2==0:
+			inp.append(x_[ix])
 	
 	for ix in range(len(inp)):
 		inpu.append(int(inp[ix], 16))
@@ -23,7 +23,7 @@ def decrypto(x):
 
 	y = y.reshape(1,16)
 
-	out = encoder.predict(y)
+	out = decoder.predict(y)
 	out = out.reshape(32,1)
 
 	cryto = []
@@ -43,5 +43,6 @@ def decrypto(x):
 	for ix in inp:
 		dec_key += str(ix)
 	
+	print dec_key
 	if crypt_str == x :
 		return dec_key

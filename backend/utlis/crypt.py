@@ -6,7 +6,7 @@ from keras.models import Model,load_model
 
 def crypto(x):
 	
-	encoder = load_model("encoder.h5")
+	encoder = load_model("/home/vasu/all_projects/Hackathons/ClashHacks-methOD/backend/utlis/encoder.h5")
 
 	x = list(x)
 	
@@ -33,4 +33,5 @@ def crypto(x):
 	for ix in cryto:
 		crypt_str += hex(int(ix)%16).split('x')[-1]
 
+	print crypt_str
 	return crypt_str
